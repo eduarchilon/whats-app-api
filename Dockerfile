@@ -30,7 +30,6 @@ RUN addgroup -S pptruser && adduser -S -G pptruser pptruser \
 USER pptruser
 
 RUN npm install
-RUN npm i whatsapp-web.js
 RUN npm run build
 ARG PUBLIC_URL
 ARG PORT

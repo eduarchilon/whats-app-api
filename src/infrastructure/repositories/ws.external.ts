@@ -16,6 +16,8 @@ class WsTransporter extends Client implements LeadExternal {
         args: [
           "--disable-setuid-sandbox",
           "--unhandled-rejections=strict",
+          "--no-sandbox",
+          "--disable-setuid-sandbox",
         ],
       },
     });
