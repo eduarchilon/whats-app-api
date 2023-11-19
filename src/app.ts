@@ -9,11 +9,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("tmp"));
 
-const transporter = new WsTransporter();
-app.get("/init", (req, res) => {
-  const htmlContent = transporter.getReturnHtml();
-  res.send(htmlContent);
-});
+// const transporter = new WsTransporter();
+// app.get("/init", (req, res) => {
+//   const htmlContent = transporter.getReturnHtml();
+//   res.send(htmlContent);
+// });
 app.use(`/`, routes);
 
 app.listen(port, () => console.log(`Ready...${port}`));

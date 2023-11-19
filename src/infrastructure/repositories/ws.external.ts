@@ -64,10 +64,10 @@ class WsTransporter extends Client implements LeadExternal {
     return this.status;
   }
 
-  private html: string = "";
-  getReturnHtml(): string {
-    return this.html;
-  }
+  // private html: string = "";
+  // getReturnHtml(): string {
+  //   return this.html;
+  // }
 
   public generateImage = (base64: string) => {
     const path = `${process.cwd()}/tmp`;
@@ -75,20 +75,22 @@ class WsTransporter extends Client implements LeadExternal {
     qr_svg.pipe(require("fs").createWriteStream(`${path}/qr.svg`));
     console.log(`⚡ Recuerda que el QR se actualiza cada minusto ⚡'`);
     console.log(`⚡ Actualiza F5 el navegador para mantener el mejor QR⚡`);
-    console.log(`https://whats-app-api-production.up.railway.app/init`);
+    // console.log(`https://whats-app-api-production.up.railway.app/init`);
     const svgContent = fs.readFileSync(`${path}/qr.svg`, "utf-8");
-    this.html = `<div style="width: 400px">${svgContent}</div>`;
-    // console.log("Contenido del archivo SVG:");
-    // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++");
-    // console.log(" ");
-    // console.log(" ");
-    // QRCode.toDataURL(base64)
-    //   .then((url: any) => {
-    //     // QRTerminal.generate(url);
-    //   })
-    //   .catch((err: any) => {
-    //     console.error(err);
-    //   });
+    // this.html = `<div style="width: 400px">${svgContent}</div>`;
+    console.log("Contenido del archivo SVG:");
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++");
+    console.log(" ");
+    QRCode.toDataURL(base64)
+      .then((url: any) => {
+        console.log(url);
+        // QRTerminal.generate(url);
+      })
+      .catch((err: any) => {
+        console.error(err);
+      });
+    console.log(" ");
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++");
   };
 }
 
