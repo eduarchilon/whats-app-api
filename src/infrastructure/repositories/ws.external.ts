@@ -1,6 +1,7 @@
 import { Client, LocalAuth } from "whatsapp-web.js";
 import { image as imageQr } from "qr-image";
 import LeadExternal from "../../domain/lead-external.repository";
+const fs = require("fs");
 
 /**
  * Extendemos los super poderes de whatsapp-web
@@ -66,8 +67,14 @@ class WsTransporter extends Client implements LeadExternal {
     const path = `${process.cwd()}/tmp`;
     let qr_svg = imageQr(base64, { type: "svg", margin: 4 });
     qr_svg.pipe(require("fs").createWriteStream(`${path}/qr.svg`));
-    console.log(`⚡ Recuerda que el QR se actualiza cada minuto ⚡'`);
+    console.log(`⚡ Recuerda que el QR se actualiza cada minusto ⚡'`);
     console.log(`⚡ Actualiza F5 el navegador para mantener el mejor QR⚡`);
+    const svgContent = fs.readFileSync(`${path}/qr.svg`, "utf-8");
+    console.log("Contenido del archivo SVG:");
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++");
+    console.log(" ");
+    console.log(svgContent);
+    console.log(" ");
   };
 }
 
